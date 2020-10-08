@@ -19,24 +19,24 @@ public:
   //construct without coefs
   FIR();
   //construct with coefs
-  FIR(float newGain, float *newCoefs);
+  FIR(int newGain, int *newCoefs);
 
-  void setGain(float newGain);
+  void setGain(int newGain);
 
-  void setCoefficients(float *newCoefs);
+  void setCoefficients(int *newCoefs);
 
   //set coefficient at specified index
-  void setCoefficient(int idx, float newCoef);
+  void setCoefficient(int idx, int newCoef);
 
-  float process(float in);
+  int process(int in);
 
 private:
-  float values[FILTERTAPS];
+  int values[FILTERTAPS];
 
-  float coef[FILTERTAPS];
+  int coef[FILTERTAPS];
 
   //declare gain coefficient to scale the output back to normal
-  float gain; // set to 1 and input unity to see what this needs to be
+  int gain; // set to 1 and input unity to see what this needs to be
 
   int k; // k stores the index of the current array read to create a circular memory through the array
 };

@@ -9,7 +9,7 @@ FIR::FIR() {
   //TODO calculate default coefs?
 }
 //construct with coefs
-FIR::FIR(float newGain, float *newCoefs) {
+FIR::FIR(int newGain, int *newCoefs) {
   k = 0; //initialize so that we start to read at index 0
   setGain(newGain);
   for (int i=0; i<FILTERTAPS; i++) {
@@ -18,22 +18,22 @@ FIR::FIR(float newGain, float *newCoefs) {
   setCoefficients(newCoefs);
 }
 
-void FIR::setGain(float newGain) {
+void FIR::setGain(int newGain) {
   gain = newGain;
 }
 
-void FIR::setCoefficients(float *newCoefs) {
+void FIR::setCoefficients(int *newCoefs) {
   for (int i=0; i<FILTERTAPS; i++) {
     coef[i] = newCoefs[i];
   }
 }
 //set coefficient at specified index
-void FIR::setCoefficient(int idx, float newCoef) { 
+void FIR::setCoefficient(int idx, int newCoef) { 
   coef[idx] = newCoef; 
 }
 
-float FIR::process(float in) {
-  float out = 0;				// out is the return variable. It is set to 0 every time we call the filter!
+int FIR::process(int in) {
+  int out = 0;				// out is the return variable. It is set to 0 every time we call the filter!
 
   values[k] = in;				// store the input of the routine (contents of the 'in' variable) in the array at the current pointer position
 
